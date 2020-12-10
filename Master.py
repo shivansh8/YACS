@@ -199,14 +199,15 @@ def select_scheduler(val,algo):
     map_len=len(val['map_tasks'])
     red_len=len(val['reduce_tasks'])
     m=[]
-
+    rr=0
     for i in range(len(val['map_tasks'])):
         if algo=='RANDOM':
             m.append(threading.Thread(target=rand_sch,args=(val['map_tasks'][i]['task_id'],val['map_tasks'][i]['duration'])))
             m[i].start()
         elif algo=='RR':
-            m.append(threading.Thread(target=rr_sch,args=(val['map_tasks'][i]['task_id'],val['map_tasks'][i]['duration'],i%3)))
+            m.append(threading.Thread(target=rr_sch,args=(val['map_tasks'][i]['task_id'],val['map_tasks'][i]['duration'],rr)))
             m[i].start()
+            rr+=1
         else:
             m.append(threading.Thread(target=ll_sch,args=(val['map_tasks'][i]['task_id'],val['map_tasks'][i]['duration'])))
             m[i].start()
@@ -219,8 +220,9 @@ def select_scheduler(val,algo):
             m.append(threading.Thread(target=rand_sch,args=(val['reduce_tasks'][i]['task_id'],val['reduce_tasks'][i]['duration'])))
             m[i].start()
         elif algo=='RR':
-            m.append(threading.Thread(target=rr_sch,args=(val['reduce_tasks'][i]['task_id'],val['reduce_tasks'][i]['duration'],i%3)))
+            m.append(threading.Thread(target=rr_sch,args=(val['reduce_tasks'][i]['task_id'],val['reduce_tasks'][i]['duration'],rr)))
             m[i].start()
+            rr+=1
         else:
             m.append(threading.Thread(target=ll_sch,args=(val['reduce_tasks'][i]['task_id'],val['reduce_tasks'][i]['duration'])))
             m[i].start()
@@ -295,11 +297,6 @@ read_thread = threading.Thread(target=read,args=(algo,))
 acknowlegment_thread = threading.Thread(target=check_acknowledgment)
 read_thread.start()
 acknowlegment_thread.start()
-# read(algo)
-'''if algo=='RANDOM':
-    rand(res)
-elif algo=='RR':
-    rr(res)
-else:
-    ll(res)'''
+
+
 
