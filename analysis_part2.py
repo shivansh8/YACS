@@ -38,14 +38,14 @@ for i in range(1, 4):
 
 
 for i in lines:
-    id, slots, time = i.split('\t')
-    id = int(id)
+    worker_id, slots, time = i.split('\t')
+    worker_id = int(worker_id)
     slots = int(slots)
     time = float(time)
 
-    ntasks = original_slots[id]- slots
-    graph_data[id][0].append(ntasks)
-    graph_data[id][1].append(time)
+    ntasks = original_slots[worker_id]- slots
+    graph_data[worker_id][0].append(ntasks)
+    graph_data[worker_id][1].append(time)
 
 
 
