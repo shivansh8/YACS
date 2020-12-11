@@ -147,15 +147,15 @@ def ll_sch(tkid,dur):
     t=0
     while t == 0:
         maxi = 0
-        lock_data.acquire()
         for i in range(3):
             #LOCKS REQ
+            lock_data.acquire()
             if data['slots'][i] > data['slots'][maxi]:
                 maxi = i
-        # lock_data.release()
+            lock_data.release()
             #LOCK ENDS
         #LOCKS REQ
-        # lock_data.acquire()
+        lock_data.acquire()
         if(data['slots'][maxi] >0): data['slots'][maxi]-=1
         else: 
             lock_data.release()
@@ -195,9 +195,7 @@ def ll_sch(tkid,dur):
         t=1
 
 
-def select_scheduler(val,algo):           
-    map_len=len(val['map_tasks'])
-    red_len=len(val['reduce_tasks'])
+def select_scheduler(val,algo):
     m=[]
     rr=0
     for i in range(len(val['map_tasks'])):
