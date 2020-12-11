@@ -2,7 +2,7 @@
 # yet another centralized scheduler- Big Data Project
 # We need to first start master, to do that we do as follows
 # The last argument is name of the algorithm (RANDOM , RR , LL)
-python3 Master.py config.json RANDOM 
+python3 Master.py Copy\ of\ config.json RANDOM 
 # Then We need to start Workers
 # python3 Worker.py port-number worker-id
 python3 Worker.py 4000 1
