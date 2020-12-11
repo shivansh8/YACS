@@ -10,5 +10,5 @@ python3 Worker.py 4000 1
 # We run a file to generate requests with number of requests
 python3 Copy\ of\ requests.py 10
 # Now we run analyze files to generate required graphs
-python3 analyze_part1.py
-python3 analyze_part2.py RANDOM
+python3 analysis_part1.py
+python3 analysis_part2.py RANDOM
