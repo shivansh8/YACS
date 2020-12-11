@@ -140,6 +140,6 @@ plt.bar(r3, task_mean,  width=barWidth, edgecolor='white', label='task_mean')
 plt.bar(r4, task_median, width=barWidth, edgecolor='white', label='task_median')
 
 plt.title('Analyze part1',fontweight='bold')
-plt.xticks([r + barWidth for r in range(3)], ['RANDOM', 'RR', 'LL'])
+plt.xticks([r + barWidth for r in range(3)], ['LL', 'RR', 'RANDOM'])
 plt.legend()
 plt.show()
